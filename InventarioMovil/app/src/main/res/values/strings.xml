@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Inventario Móvil</string>
+
+    <!-- MainActivity Strings -->
+    <string name="greeting">Hola 👋</string>
+    <string name="greeting_subtitle">Aquí tienes el resumen de tu negocio.</string>
+    <string name="daily_income_label">Ingresos del día</string>
+    <string name="daily_sales_label">Ventas</string>
+    <string name="inventory_title">Inventario</string>
+    <string name="inventory_link">Ver todo</string>
+    <string name="products_registered">Productos registrados</string>
+    <string name="low_stock">Con stock bajo</string>
+    <string name="out_of_stock">Agotados</string>
+    <string name="quick_actions">Acciones rápidas</string>
+    <string name="add_product">Agregar producto</string>
+    <string name="new_sale">Nueva venta</string>
+    <string name="categories_action">Categorías</string>
+    <string name="server_action">Servidor</string>
+    <string name="today_sales">Ventas de hoy</string>
+    <string name="see_all">Ver todas</string>
+    <string name="home_nav">Inicio</string>
+    <string name="inventory_nav">Inventario</string>
+    <string name="sales_nav">Ventas</string>
+    <string name="payments_nav">Historial</string>
+    <string name="profile_nav">Ajustes</string>
+
+    <!-- InventarioActivity Strings -->
+    <string name="my_inventory">Mi inventario</string>
+    <string name="add_btn">+ Agregar</string>
+    <string name="search_hint">Buscar producto...</string>
+    <string name="filter_all">Todos</string>
+    <string name="filter_available">Disponibles</string>
+    <string name="filter_low_stock">Stock bajo</string>
+    <string name="filter_out_of_stock">Agotados</string>
+    <string name="product_count">%d de 42 productos</string>
+    <string name="stock_label">Stock: %d u.</string>
+    <string name="price_format">Bs %d</string>
+    <string name="available_status">Disponible</string>
+    <string name="low_stock_status">Stock bajo</string>
+    <string name="out_of_stock_status">Agotado</string>
+
+    <!-- VentaActivity Strings -->
+    <string name="new_sale_title">Nueva venta</string>
+    <string name="scan_btn">Escanear</string>
+    <string name="selected_products">Productos</string>
+    <string name="add_link">+ Agregar producto</string>
+    <string name="payment_method">Método de pago</string>
+    <string name="cash">Efectivo</string>
+    <string name="qr">QR</string>
+    <string name="other">Otro</string>
+    <string name="qr_preview_title">Muestra este QR a tu cliente</string>
+    <string name="qr_payment_title">Código QR de cobro</string>
+    <string name="qr_prototype_note">Todavía no subiste tu QR de cobro. Súbelo en Ajustes → Mi QR de cobro.</string>
+    <string name="qr_ready">Listo para cobrar</string>
+    <string name="qr_waiting">Esperando confirmación del pago...</string>
+    <string name="qr_received">Pago recibido · Bs %d</string>
+    <string name="total_label">TOTAL</string>
+    <string name="items_summary">%d artículos · %d productos</string>
+    <string name="generate_qr">Cobrar con QR</string>
+    <string name="charge_cash">Cobrar efectivo</string>
+    <string name="charge_other">Cobrar otro</string>
+    <string name="waiting_confirmation">Esperando confirmación...</string>
+    <string name="sale_registered">✓ Venta registrada · Nueva venta</string>
+    <string name="payment_received">Pago recibido</string>
+    <string name="times">%d × Bs %d</string>
+</resources>

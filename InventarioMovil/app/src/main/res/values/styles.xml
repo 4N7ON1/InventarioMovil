@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.InventarioMovil" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorSecondary">@color/primary_container</item>
+        <item name="android:colorBackground">@color/bg_canvas</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="fontFamily">@font/manrope_regular</item>
+    </style>
+
+    <!-- Text Styles Base -->
+    <style name="TextStyle" />
+    <style name="TextStyle.Display" parent="TextStyle" />
+
+    <!-- Text Styles -->
+    <style name="TextStyle.Display.Large" parent="TextStyle.Display">
+        <item name="android:textSize">@dimen/text_display_lg</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/manrope_extrabold</item>
+    </style>
+
+    <style name="TextStyle.Display.Medium" parent="TextStyle.Display">
+        <item name="android:textSize">@dimen/text_display_md</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/manrope_bold</item>
+    </style>
+
+    <style name="TextStyle.Headline" parent="TextStyle">
+        <item name="android:textSize">@dimen/text_headline</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/manrope_bold</item>
+    </style>
+
+    <style name="TextStyle.Subheading" parent="TextStyle">
+        <item name="android:textSize">@dimen/text_subheading</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/manrope_semibold</item>
+    </style>
+
+    <style name="TextStyle.Body" parent="TextStyle">
+        <item name="android:textSize">@dimen/text_body</item>
+        <item name="android:fontFamily">@font/manrope_regular</item>
+    </style>
+
+    <style name="TextStyle.Label" parent="TextStyle">
+        <item name="android:textSize">@dimen/text_label</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/manrope_semibold</item>
+    </style>
+</resources>

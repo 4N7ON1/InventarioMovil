@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_canvas"
+    tools:context=".VentaActivity">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/surface"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="14dp"
+            android:paddingBottom="16dp"
+            android:paddingStart="@dimen/screen_margin"
+            android:paddingEnd="@dimen/screen_margin">
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="9dp"
+                android:background="@drawable/venta_back_button_bg"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/text_primary"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/gap_sm"
+                android:fontFamily="@font/manrope_extrabold"
+                android:textColor="@color/text_primary"
+                android:id="@+id/txtTituloVenta"
+                android:textSize="@dimen/text_headline"
+                android:text="@string/new_sale_title" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/stroke" />
+    </LinearLayout>
+
+    <!-- Scrollable content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toTopOf="@id/totalBarContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/screen_margin"
+            android:paddingTop="@dimen/gap_lg"
+            android:paddingBottom="@dimen/gap_xxl">
+
+            <!-- Section: Productos seleccionados -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/text_subheading"
+                    android:text="@string/selected_products" />
+
+                <TextView
+                    android:id="@+id/addLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:background="@drawable/shape_pill_primary"
+                    android:fontFamily="@font/manrope_bold"
+                    android:gravity="center"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:text="@string/add_link"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
+            <!-- Ayuda que se ve solo cuando el carrito está vacío -->
+            <TextView
+                android:id="@+id/txtCarritoVacio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_md"
+                android:background="@drawable/shape_card_bg"
+                android:fontFamily="@font/manrope_medium"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="Todavía no hay productos.\nToca «+ Agregar producto» para empezar."
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/carritoRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_md"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                tools:listitem="@layout/item_carrito"
+                tools:itemCount="2" />
+
+            <!-- Section: Método de pago -->
+            <TextView
+                android:id="@+id/tituloMetodoPago"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_xl"
+                android:fontFamily="@font/manrope_bold"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_subheading"
+                android:text="@string/payment_method" />
+
+            <LinearLayout
+                android:id="@+id/opcionesPago"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_md"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:id="@+id/btnEfectivo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/gap_sm"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/gap_md"
+                    android:paddingHorizontal="@dimen/gap_sm"
+                    android:background="@drawable/venta_payment_unselected_bg"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/iconEfectivo"
+                        android:layout_width="@dimen/icon_large"
+                        android:layout_height="@dimen/icon_large"
+                        android:src="@drawable/ic_payments"
+                        app:tint="@color/text_secondary"
+                        android:contentDescription="@null" />
+
+                    <TextView
+                        android:id="@+id/labelEfectivo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/gap_xs"
+                        android:fontFamily="@font/manrope_bold"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="@dimen/text_body_sm"
+                        android:text="@string/cash" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnQR"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/gap_sm"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/gap_md"
+                    android:paddingHorizontal="@dimen/gap_sm"
+                    android:background="@drawable/venta_payment_selected_bg"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/iconQR"
+                        android:layout_width="@dimen/icon_large"
+                        android:layout_height="@dimen/icon_large"
+                        android:src="@drawable/ic_qr_code_2"
+                        app:tint="@color/primary"
+                        android:contentDescription="@null" />
+
+                    <TextView
+                        android:id="@+id/labelQR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/gap_xs"
+                        android:fontFamily="@font/manrope_bold"
+                        android:textColor="@color/primary_dark"
+                        android:textSize="@dimen/text_body_sm"
+                        android:text="@string/qr" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnOtro"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/gap_md"
+                    android:paddingHorizontal="@dimen/gap_sm"
+                    android:background="@drawable/venta_payment_unselected_bg"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/iconOtro"
+                        android:layout_width="@dimen/icon_large"
+                        android:layout_height="@dimen/icon_large"
+                        android:src="@drawable/ic_credit_card"
+                        app:tint="@color/text_secondary"
+                        android:contentDescription="@null" />
+
+                    <TextView
+                        android:id="@+id/labelOtro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/gap_xs"
+                        android:fontFamily="@font/manrope_bold"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="@dimen/text_body_sm"
+                        android:text="@string/other" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- QR preview section (visible only when metodoPago == QR) -->
+            <LinearLayout
+                android:id="@+id/qrSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gap_lg"
+                android:orientation="vertical"
+                android:background="@drawable/venta_qr_card_bg"
+                android:padding="@dimen/gap_lg">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/manrope_bold"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_body_sm"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.08"
+                    android:text="@string/qr_preview_title" />
+
+                <FrameLayout
+                    android:id="@+id/qrBox"
+                    android:layout_width="@dimen/qr_box_size"
+                    android:layout_height="@dimen/qr_box_size"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/gap_md"
+                    android:background="@drawable/venta_qr_box_bg">
+
+                    <!-- Dibujo de ejemplo: se ve solo si todavía no se subió el QR real -->
+                    <ImageView
+                        android:id="@+id/icoQrEjemplo"
+                        android:layout_width="@dimen/icon_qr"
+                        android:layout_height="@dimen/icon_qr"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_qr_code_2"
+                        app:tint="@color/text_primary"
+                        android:contentDescription="@null" />
+
+                    <!-- QR real del comerciante (el que subió en Ajustes) -->
+                    <ImageView
+                        android:id="@+id/imgQrCobro"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="QR de cobro"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/qrOverlay"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/venta_qr_overlay_bg"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_huge"
+                            android:layout_height="@dimen/icon_huge"
+                            android:src="@drawable/ic_check_circle"
+                            app:tint="@color/white"
+                            android:contentDescription="@null" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/gap_sm"
+                            android:fontFamily="@font/manrope_extrabold"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_body_lg"
+                            android:text="@string/payment_received" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/qrStatusBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/gap_md"
+                    android:background="@drawable/venta_status_badge_bg"
+                    android:paddingHorizontal="@dimen/gap_md"
+                    android:paddingVertical="@dimen/gap_xs"
+                    android:fontFamily="@font/manrope_extrabold"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_label_sm"
+                    android:text="@string/qr_ready" />
+
+                <TextView
+                    android:id="@+id/txtNotaQr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/gap_md"
+                    android:gravity="center"
+                    android:fontFamily="@font/manrope_medium"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_body_sm"
+                    android:text="@string/qr_prototype_note" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Fixed total bar + payment button -->
+    <LinearLayout
+        android:id="@+id/totalBarContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/surface"
+        android:paddingHorizontal="@dimen/screen_margin"
+        android:paddingTop="@dimen/gap_lg"
+        android:paddingBottom="@dimen/gap_sm"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/gap_md"
+            android:background="@color/stroke" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/manrope_extrabold"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_label"
+                    android:letterSpacing="0.12"
+                    android:text="@string/total_label" />
+
+                <TextView
+                    android:id="@+id/resumenTexto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/text_body_lg"
+                    tools:text="3 artículos · 2 productos" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/totalTexto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/manrope_extrabold"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_display_lg"
+                tools:text="Bs 28" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/botonPago"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="@dimen/gap_md"
+            android:background="@drawable/venta_pay_button_bg"
+            android:backgroundTint="@color/accent"
+            android:fontFamily="@font/manrope_extrabold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_subheading"
+            android:textAllCaps="false"
+            android:elevation="0dp"
+            android:text="@string/generate_qr" />
+    </LinearLayout>
+
+    <!-- Bottom Navigation (same as MainActivity) -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bottom_nav_height"
+        android:background="@color/surface"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/nav_icon_color"
+        app:itemTextColor="@color/nav_text_color"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- PALETA DE LA APP (regla 60 / 30 / 10)
+         60 % crema  : fondos y tarjetas
+         30 % verde  : cabeceras, textos importantes y botones secundarios
+         10 % rojo   : solo para lo que el usuario debe tocar o mirar primero -->
+
+    <!-- Verde abeto (30 %) -->
+    <color name="primary">#1F4A3A</color>
+    <color name="primary_dark">#153629</color>
+    <color name="primary_container">#DCE7DC</color>
+    <color name="on_primary_soft">#C7D9CB</color>
+
+    <!-- Rojo tomate (10 %): botón principal de cada pantalla y avisos -->
+    <color name="accent">#EE4129</color>
+    <color name="accent_soft">#FCE0D9</color>
+
+    <!-- Crema (60 %) -->
+    <color name="bg_canvas">#F4EAD8</color>
+    <color name="surface">#FFFBF3</color>
+    <color name="surface_alt">#EDE1CA</color>
+
+    <!-- Bordes -->
+    <color name="stroke">#E0D2B8</color>
+    <color name="stroke_soft">#EBE0CB</color>
+
+    <!-- Textos -->
+    <color name="text_primary">#1E2A23</color>
+    <color name="text_secondary">#5A665D</color>
+    <color name="text_tertiary">#8C9388</color>
+
+    <!-- Estados del stock: disponible, stock bajo y agotado -->
+    <color name="ok_fg">#1F6B45</color>
+    <color name="ok_bg">#DDEBDD</color>
+    <color name="warn_fg">#A85A08</color>
+    <color name="warn_bg">#FBE7C6</color>
+    <color name="err_fg">#C9321D</color>
+    <color name="err_bg">#FCE0D9</color>
+
+    <color name="accent_dot">#EE4129</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Bottom Nav -->
+    <color name="itemActiveIndicatorColor">@color/primary_container</color>
+
+</resources>
